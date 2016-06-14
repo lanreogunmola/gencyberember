@@ -33,13 +33,17 @@ export default Ember.Controller.extend({
 			this.send('getPhotos',this.get('tagSearchField'));
 		},
 		getPhotos: function(tag){
-			var apiKey = 'ad98a3bb98a239f7d719a419d3e528e7';
+			var apiKey = '01dbbdd8cb57d5d34b5f804aad4e392b';
 			var host = 'https://api.flickr.com/services/rest/';
 			var method = "flickr.photos.search";
 	var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tags="+tag+"&per_page=50&format=json&nojsoncallback=1";
 			var photos = this.get('photos');
 			var t = this;
 			Ember.$.getJSON(requestURL, function(data){
+				if (! data.photos ) {
+					console.log("Could not load photos. Check your API key");
+					return;
+				}
 				//callback for successfully completed requests
 				//make secondary requests to get all of the photo information
 				data.photos.photo.map(function(photoitem) {//iterate over each photo
