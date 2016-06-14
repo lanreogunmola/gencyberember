@@ -22,7 +22,7 @@ module.exports = function(environment) {
     'script-src': "'self' ", 
     'font-src': "'self' ", 
     'connect-src': "'self' https://api.flickr.com", //Allow JSON requests to the flickr api
-    'img-src': "'self' http: https:", //Allow images from any http/https 
+    'img-src': "'self' http: https: data:", //Allow images from any http/https 
     'style-src': "'self' ", 
     'media-src': "'self' "
   }
@@ -49,7 +49,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/ember/';
   }
 
   return ENV;
