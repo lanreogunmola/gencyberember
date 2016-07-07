@@ -1,7 +1,6 @@
 # Myproject
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This README outlines the basic details for installing and running an ember application. These files are a 'checkpoint' of where you should have ended on Day 1 of Gencyber. You can start here if you need the clientside for day 2.
 
 ## Prerequisites
 
