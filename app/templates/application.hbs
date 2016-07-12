@@ -5,15 +5,17 @@
 			<a class="navbar-brand" href="#">My App</a>
 		</div>
 		<div class="navbar-right search-field">
-			{{#bs-form formLayout="inline" action="search"}}
-	{{#if filteredPhotos}}
-		{{bs-input type="text" value=searchField placeholder="filter photos"}}
-	{{/if}}
-	{{bs-input type="text" value=tagSearchField action="search" placeholder="search for a flickr tag"}}
-	<button type="submit" class="btn btn-default">
-		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-	</button>
-{{/bs-form}}
+			{{#bs-form formLayout="inline" class="search-form" action="search"}}
+				{{#if filteredPhotos}}
+					{{bs-input type="text" value=searchField placeholder="filter photos"}}
+				{{/if}}
+				{{bs-input type="text" value=tagSearchField action="search" placeholder="search for a flickr tag"}}
+				<button type="submit" class="btn btn-default">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</button>
+			{{/bs-form}}
+			{{auth-manager}}
+
 		</div>
 	</div>
 </nav>
