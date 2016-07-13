@@ -28,8 +28,8 @@ export default Ember.Component.extend({
 					if(remember){
 						//save username and pass to local storage
 						localStorage.setItem('remember', true);
-						localStorage.setItem('username', this.get('username'));
-						localStorage.setItem('password', this.get('password'));
+						localStorage.setItem('username', controllerObj.get('username'));
+						localStorage.setItem('password', controllerObj.get('password'));
 					}
 					else{
 						controllerObj.set('password', '');
