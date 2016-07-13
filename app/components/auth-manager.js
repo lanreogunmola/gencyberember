@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	isLoggedIn: false,
+	username: '',
+	password: '',
 	errorMsg: '',
 	remember: false,
 	userid: -1,
@@ -30,10 +32,12 @@ export default Ember.Component.extend({
 						localStorage.setItem('password', this.get('password'));
 					}
 					else{
+						controllerObj.set('password', '');
 						localStorage.removeItem('remember');
 						localStorage.removeItem('username');
 						localStorage.removeItem('password');
 					}
+
 				} else{
 					//errors
 					console.log('Login POST Request to ../api/session/ was unsuccessful.');
@@ -58,7 +62,21 @@ export default Ember.Component.extend({
 	},
 	init: function(){
 		this._super();
+		var controllerObj = this;
+		Ember.$.get('../api/session/', function(response){
+			if(response.isauthenticated){
+				//success
+				console.log('The user: \''+response.username+'\' is currently logged in.');
+				controllerObj.set('username', response.username);
+				controllerObj.set('userid', response.userid);
+				controllerObj.set('isLoggedIn', true);
+			} else{
+				//errors
+				console.log('The user is not currently logged in.');
+			}
+		});
 		if(localStorage.remember) {
+			this.set('remember', localStorage.remember);
 			this.set('username', localStorage.username);
 			this.set('password', localStorage.password);
 		}
