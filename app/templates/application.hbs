@@ -14,7 +14,7 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</button>
 			{{/bs-form}}
-			{{auth-manager}}
+			{{auth-manager class="auth-mgr" userid=userid}}
 
 		</div>
 	</div>
@@ -33,7 +33,17 @@
 					By: <a href={{photo.ownerurl}} target="_blank">{{photo.owner.username}}</a><br>
 				</div>
 				<div class="media-body">
-					<h4 class="media-heading">{{photo.title}} ({{photo.views}} Views)</h4>
+					<h4 class="media-heading">{{photo.title}} ({{photo.views}} Views)
+					{{#if photo.liked}}
+						<button class="btn btn-warning btn-xs pull-right" disabled="disabled"> 
+							<span class="glyphicon glyphicon-thumbs-up"></span> Like
+						</button> 
+					{{else}}
+						<button class="btn btn-default btn-xs pull-right" {{action "like" photo}}> 
+							<span class="glyphicon glyphicon-thumbs-up"></span> Like
+						</button> 
+					{{/if}}
+					</h4>
 					{{{photo.description}}}
 				</div>
 			</div>

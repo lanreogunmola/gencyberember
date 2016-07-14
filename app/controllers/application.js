@@ -6,8 +6,6 @@ var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	content: [],
 });
 
-
-
 export default Ember.Controller.extend({
 	photos: PhotoCollection.create(),
 	searchField: '',
@@ -26,6 +24,25 @@ export default Ember.Controller.extend({
 		});
 	}.property('photos.@each','searchField'),
 	actions: {
+		like: function (photo) {
+			var title = photo.get('title');
+			if(title.length >= 97){
+				title = title.substring(0,96) + "...";
+			}
+			var photodata = {
+				'user': this.get('userid'),
+				'title': title,
+				'objid': photo.get('id'),
+				'farm': photo.get('farm'),
+				'secret': photo.get('secret'),
+				'server': photo.get('server'),
+			};
+			Ember.$.post('../api/likes/', photodata, function(response){
+				photo.set('liked', true);
+				console.log('Request to add like for photo: '+photo.get('title')+' returned the following response');
+				console.log(response);
+			});
+		},
 		search: function () {
 			this.set('loading', true);
 			this.get('photos').content.clear();
@@ -36,7 +53,7 @@ export default Ember.Controller.extend({
 			var apiKey = '01dbbdd8cb57d5d34b5f804aad4e392b';
 			var host = 'https://api.flickr.com/services/rest/';
 			var method = "flickr.photos.search";
-	var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tags="+tag+"&per_page=50&format=json&nojsoncallback=1";
+			var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tags="+tag+"&per_page=50&format=json&nojsoncallback=1";
 			var photos = this.get('photos');
 			var t = this;
 			Ember.$.getJSON(requestURL, function(data){
@@ -81,18 +98,18 @@ export default Ember.Controller.extend({
 		}
 	},
 	init: function(){
-	this._super.apply(this, arguments);
-	var apiKey = '4435e3a217bc7afc94dfcba607b70eb1';
-	var host = 'https://api.flickr.com/services/rest/';
-	var method = "flickr.tags.getHotList";
-	var requestURL = host + "?method="+method + "&api_key="+apiKey+"&count=75&format=json&nojsoncallback=1";
-	var t = this;
-	Ember.$.getJSON(requestURL, function(data){
-		//callback for successfully completed requests
-		console.log(data);
-		data.hottags.tag.map(function(tag) {
-			t.get('tagList').pushObject(tag._content);
+		this._super.apply(this, arguments);
+		var apiKey = '4435e3a217bc7afc94dfcba607b70eb1';
+		var host = 'https://api.flickr.com/services/rest/';
+		var method = "flickr.tags.getHotList";
+		var requestURL = host + "?method="+method + "&api_key="+apiKey+"&count=75&format=json&nojsoncallback=1";
+		var t = this;
+		Ember.$.getJSON(requestURL, function(data){
+			//callback for successfully completed requests
+			console.log(data);
+			data.hottags.tag.map(function(tag) {
+				t.get('tagList').pushObject(tag._content);
+			});
 		});
-	});
-}
+	}
 });

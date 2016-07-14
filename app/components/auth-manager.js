@@ -32,12 +32,11 @@ export default Ember.Component.extend({
 						localStorage.setItem('password', controllerObj.get('password'));
 					}
 					else{
-						controllerObj.set('password', '');
 						localStorage.removeItem('remember');
 						localStorage.removeItem('username');
 						localStorage.removeItem('password');
 					}
-
+					controllerObj.set('password', '');
 				} else{
 					//errors
 					console.log('Login POST Request to ../api/session/ was unsuccessful.');
@@ -55,6 +54,12 @@ export default Ember.Component.extend({
 					controllerObj.set('errorMsg', '');
 					controllerObj.set('username', '');
 					controllerObj.set('userid', -1);
+
+					if(localStorage.remember) {
+						controllerObj.set('remember', localStorage.remember);
+						controllerObj.set('username', localStorage.username);
+						controllerObj.set('password', localStorage.password);
+					}
 				}
 			);
 
