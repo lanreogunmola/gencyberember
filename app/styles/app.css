@@ -46,3 +46,7 @@ body { padding-top: 70px; }
 .left-menu {
 	margin-top: -8px;
 }
+
+.profile-feed-img {
+	min-width: 100%;
+}
