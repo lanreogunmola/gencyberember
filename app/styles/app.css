@@ -42,3 +42,7 @@ body { padding-top: 70px; }
 .auth-mgr {
 	float: right;
 }
+
+.left-menu {
+	margin-top: -8px;
+}

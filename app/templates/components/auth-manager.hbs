@@ -1,6 +1,6 @@
 {{#if isLoggedIn}} {{! Display user name and logout button}}
 	<p class="auth-form">
-		Hello {{username}}
+		Hello {{#link-to "profile"}}{{username}}{{/link-to}}
 		<button type="button" class="btn btn-default" {{action 'logout'}}>Log out</button>
 	</p>
 {{else}} {{!Display login page}}
