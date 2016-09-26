@@ -16,4 +16,8 @@ export default Ember.Route.extend({
 			console.log(response);
 		});
 	}
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a

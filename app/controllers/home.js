@@ -51,7 +51,11 @@ export default Ember.Controller.extend({
 			this.send('getPhotos',this.get('tagSearchField'));
 		},
 		getPhotos: function(tag){
+<<<<<<< HEAD
 			var apiKey = 'f73a4f9b7486132776d620f10d4ccf93';
+=======
+			var apiKey = '01dbbdd8cb57d5d34b5f804aad4e392b';
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 			var host = 'https://api.flickr.com/services/rest/';
 			var method = "flickr.photos.search";
 			var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tags="+tag+"&per_page=50&format=json&nojsoncallback=1";
@@ -100,7 +104,11 @@ export default Ember.Controller.extend({
 	},
 	init: function(){
 		this._super.apply(this, arguments);
+<<<<<<< HEAD
 		var apiKey = 'f73a4f9b7486132776d620f10d4ccf93';
+=======
+		var apiKey = '4435e3a217bc7afc94dfcba607b70eb1';
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 		var host = 'https://api.flickr.com/services/rest/';
 		var method = "flickr.tags.getHotList";
 		var requestURL = host + "?method="+method + "&api_key="+apiKey+"&count=75&format=json&nojsoncallback=1";

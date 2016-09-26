@@ -43,7 +43,11 @@ export default Ember.Component.extend({
 					controllerObj.set('errorMsg', response.message);
 				}
 			});
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 		},
 		logout: function(){
 			var controllerObj = this;

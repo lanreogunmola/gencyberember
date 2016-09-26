@@ -6,4 +6,8 @@ export default Ember.Component.extend({
 		".staticflickr.com/"+this.get('like').server+
 		"/"+this.get('like').objid+"_"+this.get('like').secret+"_b.jpg";
 	}),
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a

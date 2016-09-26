@@ -12,6 +12,7 @@
 				<div class="media-body">
 					<h4 class="media-heading">{{photo.title}} ({{photo.views}} Views)
 					{{#if photo.liked}}
+<<<<<<< HEAD
 						<button class="btn btn-warning btn-xs pull-right" disabled="disabled">
 							<span class="glyphicon glyphicon-thumbs-up"></span> Like
 						</button>
@@ -19,6 +20,15 @@
 						<button class="btn btn-default btn-xs pull-right" {{action "like" photo}}>
 							<span class="glyphicon glyphicon-thumbs-up"></span> Like
 						</button>
+=======
+						<button class="btn btn-warning btn-xs pull-right" disabled="disabled"> 
+							<span class="glyphicon glyphicon-thumbs-up"></span> Like
+						</button> 
+					{{else}}
+						<button class="btn btn-default btn-xs pull-right" {{action "like" photo}}> 
+							<span class="glyphicon glyphicon-thumbs-up"></span> Like
+						</button> 
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 					{{/if}}
 					</h4>
 					{{{photo.description}}}
@@ -29,7 +39,11 @@
 				<div class="col-md-1 col-xs-1 col-sm-1">Tags:</div>
 				<div class="col-md-11 col-xs-11 col-sm-11">
 					{{#each tag in photo.tags}}
+<<<<<<< HEAD
 						<button class="btn btn-info btn-xs post-tag-button" {{action "clicktag" tag}}>#{{tag}}</button>
+=======
+						<button class="btn btn-info btn-xs post-tag-button" {{action "clicktag" tag}}>#{{tag}}</button> 
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 					{{/each}}
 				</div>
 			</div>
@@ -42,8 +56,13 @@
 		<img src="../page-loading.gif" class="img-responsive center-block"/>
 	{{else}}
 		<div class="jumbotron">
+<<<<<<< HEAD
 			<h1> Secure Web Development</h1>
 			<p>Created by Lanre Ogunmola</p>
+=======
+			<h1>[app-name]</h1>
+			<p>Created by [yourname]</p>
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 			<p>Click one of the popular flickr tags below or search one above:</p>
 			{{#each tag in tagList}}
 				<button class="btn btn-info btn-small tag-button" {{action "clicktag" tag}}>#{{tag}}</button>
@@ -51,4 +70,8 @@
 		</div>
 	{{/liquid-if}}
 
+<<<<<<< HEAD
 {{/liquid-if}}
+=======
+{{/liquid-if}}
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a

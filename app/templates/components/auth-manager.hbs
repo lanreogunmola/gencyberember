@@ -5,9 +5,15 @@
 	</p>
 {{else}} {{!Display login page}}
 	{{#if errorMsg}}
+<<<<<<< HEAD
 
 		<form class="form-inline auth-form">
 
+=======
+		
+		<form class="form-inline auth-form">
+			
+>>>>>>> cc3f1b9c569c4d4c44504ca7b8b07d7646967f0a
 			<div class="form-group has-error">
 				<label class="control-label"><div class="alert alert-danger" style="padding: 5px; margin-bottom: 0px;" role="alert">{{errorMsg}}</div></label>
 				{{input class="form-control auth-user-field" value=username action="login" placeholder="Username"}}
